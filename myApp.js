@@ -2,7 +2,7 @@
 * 3. FCC Mongo & Mongoose Challenges
 * ==================================
 ***********************************************/
-
+require('dotenv').config();
 /** # MONGOOSE SETUP #
 /*  ================== */
 
@@ -40,8 +40,15 @@ mongoose.connect(process.env.MONGO_URI)
 // `default` values. See the [mongoose docs](http://mongoosejs.com/docs/guide.html).
 
 // <Your code here >
+const Schema = mongoose.Schema
+const personSchema = new Schema({
+  name: String,
+  age: Number,
+  favoriteFoods: [String]
+})
 
-var Person /* = <Your Model> */
+// Creating a Model
+const Person = mongoose.model('Person',personSchema)
 
 // **Note**: GoMix is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
