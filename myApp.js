@@ -124,10 +124,11 @@ const createManyPeople = (arrayOfPeople, done) => {
 // It supports an extremely wide range of search options. Check it in the docs.
 // Use the function argument `personName` as search key.
 
-var findPeopleByName = function(personName, done) {
-  
-  done(null/*, data*/);
-
+const findPeopleByName = (personName, done) => {
+  Person.find({name: personName}, (err, people) => {
+    if (err) return done(err)
+    done(null, people)
+  })
 };
 
 /** 6) Use `Model.findOne()` */
@@ -139,11 +140,12 @@ var findPeopleByName = function(personName, done) {
 // using `Model.findOne() -> Person`. Use the function
 // argument `food` as search key
 
-var findOneByFood = function(food, done) {
-
-  done(null/*, data*/);
-  
-};
+// const findOneByFood = function(food, done) {
+//   Person.findOne(food, (err, person) => {
+//     if (err) return done(err)
+//     done(null, person)
+//   })
+// };
 
 /** 7) Use `Model.findById()` */
 
